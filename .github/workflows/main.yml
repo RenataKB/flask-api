@@ -7,19 +7,19 @@ on:
       - main
   
 jobs:
-  build-and-push:
-    name: Build image and push to GitHub Packages registry
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+#   build-and-push:
+#     name: Build image and push to GitHub Packages registry
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out code
+#         uses: actions/checkout@v2
 
-      - name: Build, tag, and push image to Github Container Registry
-        run: |
-          echo ${{ secrets.GH_TOKEN }} | docker login ghcr.io -u docker --password-stdin
-          docker build -t flask-api .
-          docker tag flask-api ghcr.io/andre177/flask-api
-          docker push ghcr.io/andre177/flask-api
+#       - name: Build, tag, and push image to Github Container Registry
+#         run: |
+#           echo ${{ secrets.GH_TOKEN }} | docker login ghcr.io -u docker --password-stdin
+#           docker build -t flask-api .
+#           docker tag flask-api ghcr.io/andre177/flask-api
+#           docker push ghcr.io/andre177/flask-api
           
   test-api:
     name: Run API and run a GET request
