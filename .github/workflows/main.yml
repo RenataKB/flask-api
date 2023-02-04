@@ -1,48 +1,15 @@
-name: Build and push
-
-on:
-  workflow_dispatch:
-  push:	
-    branches:
-      - main
-  
+name: Pratica de Aula
+run-name: Testing out GitHub Actions
+on: [push]
 jobs:
-#   build-and-push:
-#     name: Build image and push to GitHub Packages registry
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check out code
-#         uses: actions/checkout@v2
-
-#       - name: Build, tag, and push image to Github Container Registry
-#         run: |
-#           echo ${{ secrets.GH_TOKEN }} | docker login ghcr.io -u docker --password-stdin
-#           docker build -t flask-api .
-#           docker tag flask-api ghcr.io/andre177/flask-api
-#           docker push ghcr.io/andre177/flask-api
-          
-#   test-api:
-#     name: Run API and run a GET request
-#     runs-on: self-hosted
-#     needs: build-and-push
-#     steps:
-#       - name: Check out code
-#         uses: actions/checkout@v2
-        
-#       - name: Testing API
-#         run: |
-#           pip3 install flask
-#           python3 api.py &
-#           sleep 10
-#           curl -XGET http://localhost:5000/ping
-
-  silly-job:
-    name: Run API and run a GET request
+  Explore-GitHub-Actions:
     runs-on: self-hosted
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        
-      - name: Saying Hello
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
         run: |
-          echo "Hello?"
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
